@@ -12,7 +12,6 @@ namespace Model
     {
         public int Id { get; set; }
 
-        //comment woo
         /*
         public IEnumerable<Transaction> SimilarTransactions {
             get {
