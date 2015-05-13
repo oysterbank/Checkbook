@@ -2,14 +2,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:WpfApplication2" mc:Ignorable="d" x:Class="WpfApplication2.MainWindow"
-        Title="Checkbook | Kris Laratta" Height="330.314" Width="946.498" Loaded="Window_Loaded" Name="root">
+        Title="Checkbook | Kris Laratta" Height="369.12" Width="946.498" Loaded="Window_Loaded" Name="root">
     <Window.Resources>
     </Window.Resources>
-    <Grid Margin="0,0,2,0">
+    <Grid Margin="0,0,2,4">
         <Grid.RowDefinitions>
-            <RowDefinition Height="41*"/>
-            <RowDefinition Height="234*"/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="244*"/>
+            <RowDefinition Height="52"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="312*"/>
@@ -44,42 +44,31 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="55" MinHeight="33"/>
+                <RowDefinition Height="55" MinHeight="33"/>
+                <RowDefinition Height="55" MinHeight="33"/>
+                <RowDefinition Height="55" MinHeight="33"/>
+                <RowDefinition Height="56" MinHeight="54"/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="Account:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,3" Grid.Row="0" VerticalAlignment="Center"/>
-            <ComboBox DisplayMemberPath="Name"  Grid.Column="1" SelectedItem="{Binding Account}" Height="Auto" ItemsSource="{Binding ElementName=root, Path=DataContext.Accounts}" Margin="3,6,3,5" Grid.Row="0" VerticalAlignment="Center" >
+            <Label Content="Account:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,3" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="56"/>
+            <ComboBox DisplayMemberPath="Name"  Grid.Column="1" SelectedItem="{Binding Account}" Height="22" ItemsSource="{Binding ElementName=root, Path=DataContext.Accounts}" Margin="3,6,3,5" Grid.Row="0" VerticalAlignment="Center" >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Label Content="Amount:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,4" Grid.Row="1" VerticalAlignment="Center"/>
+            <Label Content="Amount:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,4" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="55"/>
             <TextBox x:Name="amountTextBox" Grid.Column="1" Height="23" Margin="3,5" Grid.Row="1" Text="{Binding Amount, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true }" VerticalAlignment="Center"/>
-            <Label Content="Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,3" Grid.Row="2" VerticalAlignment="Center"/>
-            <DatePicker x:Name="dateDatePicker" Grid.Column="1" Margin="3,4,3,5" Grid.Row="2" SelectedDate="{Binding Date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
-            <Label Content="Payee:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,4" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,3" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="37"/>
+            <DatePicker x:Name="dateDatePicker" Grid.Column="1" Margin="3,4,3,5" Grid.Row="2" SelectedDate="{Binding Date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Height="24"/>
+            <Label Content="Payee:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,4" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="44"/>
             <TextBox x:Name="payeeTextBox" Grid.Column="1" Height="23" Margin="3,5" Grid.Row="3" Text="{Binding Payee, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
-            <Label Content="Tag:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,1.477" Grid.Row="4" VerticalAlignment="Center"/>
-            <TextBox x:Name="tagTextBox" Grid.Column="1" Height="23" Margin="3,5,3,3.477" Grid.Row="4" Text="{Binding Tag, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
-            <ListBox Grid.Row="5" Grid.Column="1" ItemsSource="{Binding SimilarTransactions}" >
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Date}" />
-                            <TextBlock Text="{Binding Tag}" />
-                            <TextBlock Text="{Binding Amount}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <Label Content="Tag:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,16,0,12" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="32"/>
+            <TextBox x:Name="tagTextBox" Grid.Column="1" Height="24" Margin="3,16,3,14" Grid.Row="4" Text="{Binding Tag, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
         </Grid>
-        <ListView  Grid.Column="1" ItemsSource="{Binding Accounts}" IsSynchronizedWithCurrentItem="True"  SelectionMode="Single" Grid.RowSpan="2">
+        <ListView  Grid.Column="1" ItemsSource="{Binding Accounts}" IsSynchronizedWithCurrentItem="True"  SelectionMode="Single" Grid.Row="1">
             <ListView.ItemContainerStyle>
                 <Style>
                     <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
@@ -101,6 +90,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Grid.Row="2" Grid.Column="2" Command="{Binding Save}" Margin="0,0,18,0" HorizontalAlignment="Right" Width="40" >Save</Button>
+        <Button Grid.Row="2" Grid.Column="2" Command="{Binding Save}" Margin="0,10,136,10" HorizontalAlignment="Right" Width="40" >Save</Button>
+        <Label Content="Accounts" Grid.Column="1" HorizontalAlignment="Left" Margin="116,3,0,0" VerticalAlignment="Top" Height="26" Width="59"/>
+        <Label Content="Transactions" HorizontalAlignment="Left" Margin="109,4,0,0" VerticalAlignment="Top" Height="26" Width="76"/>
     </Grid>
 </Window>
