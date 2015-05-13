@@ -101,9 +101,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox Grid.Row="2" Text="{Binding CurrentPage}" Margin="111,0,146,0"></TextBox>
-        <Button Grid.Row="2" Command="{Binding MoveNext}" Margin="0,0,101,0" HorizontalAlignment="Right" Width="40" >&gt;</Button>
-        <Button Grid.Row="2" Command="{Binding NewTransaction}" Margin="0,0,56,0" HorizontalAlignment="Right" Width="40" >*</Button>
         <Button Grid.Row="2" Grid.Column="2" Command="{Binding Save}" Margin="0,0,18,0" HorizontalAlignment="Right" Width="40" >Save</Button>
     </Grid>
 </Window>
