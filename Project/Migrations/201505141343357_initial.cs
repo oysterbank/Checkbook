@@ -28,6 +28,7 @@ namespace Project.Migrations
                         Payee = c.String(),
                         AccountId = c.Int(nullable: false),
                         Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        maxPayee = c.Boolean(nullable: false),
                         Tag = c.String(),
                     })
                 .PrimaryKey(t => t.Id)

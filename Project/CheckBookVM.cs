@@ -7,6 +7,7 @@ using Model;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows;
+using System.Windows.Media;
 
 namespace CheckBook
 {
@@ -37,8 +38,16 @@ namespace CheckBook
         private ObservableCollection<Transaction> _Transactions;
         public ObservableCollection<Transaction> Transactions
         {
-            get { return _Transactions; }
+            get {
+                   
+                    
+                    
+;                   return _Transactions; 
+                }
             set { _Transactions = value; OnPropertyChanged(); OnPropertyChanged("Accounts"); }
+
+            
+
         }
 
         public IEnumerable<Account> Accounts
@@ -66,7 +75,18 @@ namespace CheckBook
                                 var updateAccount = (from A in Accounts where A == _newTransaction.Account select A).Single();
                                 updateAccount.Balance = updateAccount.Balance + _newTransaction.Amount;
                                 _Db.SaveChanges();
-                                _newTransaction = new Transaction {Date = DateTime.Now };
+                                _newTransaction = new Transaction {Date = DateTime.Now};
+
+                                decimal maxPayee = 0;
+                                foreach (var Transaction in Transactions)
+                                {
+                                    if (Transaction.Amount > maxPayee)
+                                    {
+                                        maxPayee = Transaction.Amount;
+                                        Transaction.maxPayee = true;
+                                    }
+                                }
+
                             },
                  CanExecuteFunction = _ => _newTransaction.Account != null && _newTransaction.Amount != 0
                     };
@@ -76,10 +96,6 @@ namespace CheckBook
             }
         }
                             
-                    
-               
-                
- 
 
         public DelegateCommand NewTransaction
         {
@@ -123,6 +139,8 @@ namespace CheckBook
             Transactions = _Db.Transactions.Local;
             _Db.Accounts.ToList();
             _Db.Transactions.ToList();
+
+           
 
         }
     }

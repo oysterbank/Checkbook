@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Windows.Media;
 
 namespace Model
 {
@@ -31,7 +32,9 @@ namespace Model
         private string _Payee;
         public string Payee
         {
-            get { return _Payee; }
+            get {  
+                    return _Payee; 
+                }
             set { _Payee = value; OnPropertyChanged(); }
         }
 
@@ -51,6 +54,12 @@ namespace Model
             set { _Amount = value; OnPropertyChanged(); OnPropertyChanged("Currency2"); }
         }
 
+        private bool _maxPayee;
+        public bool maxPayee
+        {
+            get { return _maxPayee; }
+            set { _maxPayee = value; OnPropertyChanged(); }
+        }
 
         private string _Tag;
         public string Tag
